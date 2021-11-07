@@ -1,0 +1,54 @@
+<div class="container">
+    <h3>Projections</h3>
+    <br />
+    <div class="row">
+        <div class="col-md-2">Projection</div>
+        <div class="col-md-2">Month/Year</div>
+        <div class="col-md-2">Activity</div>
+        <div class="col-md-2">Estimated</div>
+        <div class="col-md-2">Actual</div>
+        <div class="col-md-2">Estimated Balance</div>
+    </div>
+    <div *ngFor="let projection of projections">
+        <div class="row">
+            <div class="col-md-2">{{projection.month == 'January'? projectionNumber + 1: ''}}</div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row" *ngIf="projection.monthData?.length == 0">
+            <div class="col-md-2"></div>
+            <div class="col-md-2">{{projection.month}}</div>
+            <div class="col-md-2">--</div>
+            <div class="col-md-2">--</div>
+            <div class="col-md-2">--</div>
+            <div class="col-md-2">--</div>
+        </div>
+        <div class="row" *ngFor="let monthData of projection.monthData; let i = index">
+            <div class="col-md-2"></div>
+            <div class="col-md-2">{{projection.month}}</div>
+            <div class="col-md-2">Deposit: {{monthData.description}}</div>
+            <div class="col-md-2">${{monthData.deposit}}</div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row" *ngFor="let monthData of projection.monthData; let i = index">
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2">Withdrawal: {{monthData.description}}</div>
+            <div class="col-md-2">-${{monthData.payment}}</div>
+            <div class="col-md-2">{{projection.actuals && projection.actuals.length > 0? '$'+projection.actuals[0].amount: ''}}</div>
+            <div class="col-md-2">${{monthData.projected}}</div>
+        </div>
+        <div class="row" *ngFor="let actual of projection.actuals; let i = index">
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2">{{projection.actuals && projection.actuals.length > 0 && i > 0? 'Withdrawal: ' + actual.memo: ''}}</div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2">{{projection.actuals && projection.actuals.length > 0 && i > 0? '$'+projection.actuals[i].amount: ''}}</div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+</div>
