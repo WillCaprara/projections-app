@@ -8,6 +8,8 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 In projection.service change _apiUrl value to the port your API is running on.
 
+As stated above, to run the application, open a command prompt, go to the root folder and run ng serve. Then Navigate to `http://localhost:4200 in your browser.
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
